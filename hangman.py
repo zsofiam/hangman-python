@@ -89,7 +89,8 @@ def play(word, lives):
     else:
         print("You died. The word was", word)
         
-
+# word: Germany
+# guess: e
 def add_guess_to_revealed_letters(revealed_letters, guess, word):
     revealed_letters_list = list(revealed_letters)
     indices = [i for i, letter in enumerate(word) if letter == guess]
@@ -207,20 +208,17 @@ def display_hangman(lives):
 
 # in case we want to repeat the game
 def main():
-    game = True
     start_game("countries_and_capitals.txt")
-    while game == True:
+    while True:
         answer = input("Do you want to play again? Y/N\n").upper()
-        try:
-            if answer == "Y":
-                main()
-                answer = input("Do you want to play again? Y/N\n").upper()
-            elif answer == "N" or answer == "QUIT":
-                print("Goodbye!")
-                exit()
-        except ValueError:
-            print("Choose Y or N")
-            continue
+        if answer == "Y":
+            start_game("countries_and_capitals.txt")
+            answer = input("Do you want to play again? Y/N\n").upper()
+        elif answer == "N" or answer == "QUIT":
+            print("Goodbye!")
+            exit()
+        else:
+            print("Please choose!")
 
 
 if __name__ == '__main__':
